@@ -30,27 +30,31 @@ let products = [
  * reduce function (https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)
  * */
 
+//function to calculate the sum of prices and the total value of the stock
 function calculateTotal(products){
 
-    // Calcula la suma de los precios
-    const totalPrice = products.reduce((acc, { product_price}) => acc +  product_price, 0);
+    // Calculate the sum of the prices
+    let totalPrice = products.reduce((acc, { product_price}) => acc +  product_price, 0);
 
-    // Calcula la suma del valor del stock
-    const totalStock = products.reduce((acc, { product_quantity }) => acc + product_quantity, 0);
+    // Calculate the total value of the stock
+    let totalStock = products.reduce((acc, { product_quantity }) => acc + product_quantity, 0);
 
-    // Ordena los productos por precio
-    const expensiveProduct = products.sort((a, b) => b.product_price - a.product_price);
+    // Get the product with the highest price
+    let expensiveProduct = products.sort((a, b) => b.product_price - a.product_price);
 
-    // Obtiene el nombre del producto más caro
-    const mostexpensiveProduct = expensiveProduct[0].product_name;
+    // Get the name of the most expensive product
+    let mostexpensiveProduct = expensiveProduct[0].product_name;
         
     return { totalPrice, totalStock, expensiveProduct , mostexpensiveProduct};
 }
 
-const result = calculateTotal(products);
-console.log(`Suma de precios: ${result.totalPrice}`); 
-console.log(`Suma de stock: ${result.totalStock}`); 
-console.log(`Producto más caro: ${result.mostexpensiveProduct}`);
+//Call the function
+let{  totalPrice, totalStock, expensiveProduct , mostexpensiveProduct} = calculateTotal(products);
+
+//Print the results
+console.log('Sum of prices:', totalPrice); 
+console.log('Sum of stock:', totalStock); 
+console.log('Product with the highest price:', mostexpensiveProduct);
 
 /** Expected result: 
  * // { totalPrice: 170, totalQuantity: 10, mostExpensiveProduct: { product_name: "Chaqueta", product_price: 160000, product_quantity: 44 } }

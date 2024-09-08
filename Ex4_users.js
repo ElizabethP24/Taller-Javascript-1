@@ -12,20 +12,31 @@
      * Spread Operator (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
      * */
 
-    //Filtrar los usuarios mayores de edad
+//Function to filter and map the users
+function filterUser(users){
+
+    //Filter the users older than 18
     let userAdult = users.filter((users) => {
         return users.age > 18
     })
 
-    //Map
+    // Get the age in days and add it to the user object
     let resultUsers = userAdult.map((users) => {
         return {
             ...users,
             age_in_days: users.age *365
         }
     })
+
+    return resultUsers;
+}
     
-    console.log('Usuarios Mayores de Edad',resultUsers)
+    //Call the function
+    let resultUsers = filterUser(users);
+    //Print the results
+    console.log('Users older than 18',resultUsers)
+
+
     /**
      * Expected Result:
      * [

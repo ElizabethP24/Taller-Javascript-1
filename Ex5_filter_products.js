@@ -1,7 +1,6 @@
 /**
  * 5.	Dado un arreglo de objetos JSON que representan productos, escribe una función que devuelva un nuevo que contenga solo los productos que tengan un precio mayor a $70000 y una cantidad inferior a 100, luego a cada producto se debe agregar una nueva propiedad "taxValue" que represente el precio con el impuesto del 19% y una propiedad “totalValue” de valor más el impuesto calculado. Utiliza el spread operator, la función map y filter.
  */
-
 let products = [
     {
         id_product: 1,
@@ -28,18 +27,20 @@ let products = [
         product_quantity: 104 
     }
 ]
-
 /** Use Filter function (https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
  * map function (https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
  * Spread Operator (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
  * */
-    
-    //Filtrar los usuarios mayores de edad
+
+//Function to filter and map the products
+function filterProduct(products){
+
+    //Filter the products with price > 70000 and quantity < 100
     let filterProducts = products.filter((products) => {
         return products.product_price> 70000 && products.product_quantity < 100
     })
 
-      //Map
+      //Get the tax value and total value of the product in the new object
     let resultProducts = filterProducts.map((products) => {
         return {
             ...products,
@@ -48,6 +49,11 @@ let products = [
         }
     })
 
+    return resultProducts;
+}
+    //Call the function
+    let resultProducts = filterProduct(products);
+    //Print the results
     console.log('Products',resultProducts)
     
 /**

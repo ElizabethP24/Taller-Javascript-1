@@ -26,21 +26,23 @@ let products = [
         product_quantity: 104 
     }
 ]
-    // Función para calcular la suma de los precios y el valor total del stock
+    // Function to calculate the sum of prices and the total value of the stock
     function calculateTotal(products){
 
-        // Calcula la suma de los precios
-        const totalPrice = products.reduce((acc, { product_price}) => acc +  product_price, 0);
+        //Calculate the sum of the prices
+        let totalPrice = products.reduce((acc, { product_price}) => acc +  product_price, 0);
     
-        // Calcula la suma del valor del stock
-        const totalStock = products.reduce((acc, { product_price, product_quantity }) => acc + ( product_price * product_quantity), 0);
+        // Calculate the total value of the stock
+        let totalStock = products.reduce((acc, { product_price, product_quantity }) => acc + ( product_price * product_quantity), 0);
             
         return { totalPrice, totalStock };
     }
-
-    const result = calculateTotal(products);
-    console.log(`Suma de precios: ${result.totalPrice}`); 
-    console.log(`Suma del valor del stock: ${result.totalStock}`); 
+    
+    //Call the function
+    let  { totalPrice, totalStock }= calculateTotal(products);
+    //Print the results
+    console.log('Sum of prices:',totalPrice); 
+    console.log('Sum of stock:', totalStock); 
 
     /** Use Spread Operator and reduce function (https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) */
     /** Expected result: 
