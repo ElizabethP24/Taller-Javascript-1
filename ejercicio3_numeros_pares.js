@@ -15,10 +15,8 @@ let pairNumbers = numbers.filter((number) => {
 
 //Multiplicar los números pares por 2
 let totalNumbers = pairNumbers.map((number) => {
-    return {
-        ...number,
-        numbers_pairs2: number *2
-    }
+    return  number *2
+    
 })
 
 console.log('Números Pares', pairNumbers)
